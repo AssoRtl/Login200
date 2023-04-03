@@ -1,0 +1,88 @@
+﻿<Window x:Class="Login2.Windows.EmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Login2.Windows"
+        mc:Ignorable="d"
+        Title="EmployeeWindow" Height="450" Width="800">
+    <Grid Background="BurlyWood">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button
+                x:Name="btnCange" 
+                Content="ИЗМЕНИТЬ" 
+                Height="30" 
+                Width="100" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Margin="5" Click="btnCange_Click" 
+                />
+            <Button
+                x:Name="btnDel" 
+                Content="УДАЛИТЬ" 
+                Height="30" 
+                Width="100" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Margin="5" Click="btnDel_Click" 
+                />
+            <Button
+                x:Name="btnAdd" 
+                Content="ДОБАВИТЬ" 
+                Height="30" 
+                Width="100" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Margin="5" Click="btnAdd_Click" 
+                />
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button
+                x:Name="btnBack" 
+                Content="НАЗАД" 
+                Height="30" 
+                Width="50" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Left" 
+                Margin="10 0 0 0" Click="btnBack_Click"
+                />
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBox
+                x:Name="TBSearch"
+                 Height="30"
+                Width="200"
+                Margin="0 0 30 0"
+                  FontSize="15"/>
+
+            <ComboBox
+                x:Name="CMBFilter"
+                Height="30"
+                Width="200"
+                Margin="0 0 10 0"
+                FontSize="15"
+                SelectionChanged ="CmbSort_SelectionChanged"/>
+
+        </StackPanel>
+        <DataGrid AutoGenerateColumns="False" x:Name="EmployeesGrid" Grid.Row="1" SelectionChanged="dataGrid1_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID}" Header="Номер" Width="50"/>
+                <DataGridTextColumn Binding="{Binding FirstName}" Header="Имя" Width="100"/>
+                <DataGridTextColumn Binding="{Binding LastName}" Header="Фамилия" Width="100"/>
+                <DataGridTextColumn Binding="{Binding MidleName}" Header="Отчество" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Gender.Name}" Header="Пол" Width="80"/>
+                <DataGridTextColumn Binding="{Binding Phone}" Header="Телефон" Width="105"/>
+                <DataGridTextColumn Binding="{Binding Salary}" Header="Зарплата" Width="105"/>
+                <DataGridTextColumn Binding="{Binding Passport}" Header="Паспорт" Width="105"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

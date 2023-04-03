@@ -1,0 +1,93 @@
+﻿<Window x:Class="Login2.Windows.OrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Login2.Windows"
+        mc:Ignorable="d"
+        Title="OrderWindow" Height="450" Width="900">
+    <Grid Background="BurlyWood">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button
+                x:Name="btnCange" 
+                Content="ИЗМЕНИТЬ" 
+                Height="30" 
+                Width="100" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Margin="5" Click="btnCange_Click" 
+                />
+            <Button
+                x:Name="btnDel" 
+                Content="УДАЛИТЬ" 
+                Height="30" 
+                Width="100" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Margin="5" Click="btnDel_Click" 
+                />
+            <Button
+                x:Name="btnAdd" 
+                Content="ДОБАВИТЬ" 
+                Height="30" 
+                Width="100" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Margin="5" Click="btnAdd_Click" 
+                />
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Button
+                x:Name="btnBack" 
+                Content="НАЗАД" 
+                Height="30" 
+                Width="50" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Left" 
+                Margin="10 0 0 0" Click="btnBack_Click"
+                />
+            
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.ColumnSpan="2">
+            
+
+            <ComboBox
+                x:Name="CMBFilter"
+                Height="30"
+                Width="200"
+                Margin="0 0 10 0"
+                FontSize="15"
+                SelectionChanged ="CmbSort_SelectionChanged"/>
+
+        </StackPanel>
+
+        <DataGrid AutoGenerateColumns="False" x:Name="OrdersGrid" SelectionChanged="dataGrid1_SelectionChanged" Grid.Row="1" Width="700">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID}" Header="Номер" Width="60"/>
+                <DataGridTextColumn Binding="{Binding OrderDate}" Header="Дата бронирования" Width="120"/>
+                <DataGridTextColumn Binding="{Binding StartDate}" Header="Дата начала бронирования" Width="165"/>
+                <DataGridTextColumn Binding="{Binding EndDate}" Header="Дата оконч. бронирования" Width="165"/>
+                <DataGridTextColumn Binding="{Binding IdClient}" Header="Клиентом" Width="80"/>
+                <DataGridTextColumn Binding="{Binding Price}" Header="Цена" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Name="RoomOrderGrid" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="1" Width="150">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="IdOrder" Width="60"   Binding="{Binding Idorder}" CanUserResize="False" />
+                <DataGridTextColumn Header="IdRoom" Width="60" Binding="{Binding IdRoom}" CanUserResize="False"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
